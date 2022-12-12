@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { prisma } from "../../../src/prisma"
 
-import { State, interpret } from "xstate"
+import { interpret } from "xstate"
 import { collatzProblemMachine } from '../../../src/machines/CollatzProblemMachine'
 
 type ResponseData = {
