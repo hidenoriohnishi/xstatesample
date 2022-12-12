@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from "../../../src/prisma"
 
 import { State, interpret } from "xstate"
-import { collatzPlobremMachine } from '../../../src/machines/CollatzProblemMachine'
+import { collatzProblemMachine } from '../../../src/machines/CollatzProblemMachine'
 
 type ResponseData = {
   success: boolean
@@ -24,7 +24,7 @@ export default async function handler(
     }
     case "POST": {
       const d = Math.floor(Math.random() * 1000) + 1
-      const service = interpret(collatzPlobremMachine.withContext({ value: d, count: 0 }))
+      const service = interpret(collatzProblemMachine.withContext({ value: d, count: 0 }))
       await prisma.machine.create({ data: { name: d.toString(), data: JSON.stringify(service.getSnapshot()) } })
       res.status(200).json({ success: true })
       break

@@ -17,6 +17,7 @@ const config: MachineConfig<CollatzProblemMachineContext, any, CollatzProblemMac
       on: {
         NEXT: {
           target: "proc",
+          actions: "operate",
         }
       }
     },
@@ -28,7 +29,6 @@ const config: MachineConfig<CollatzProblemMachineContext, any, CollatzProblemMac
         },
         {
           target: "idle",
-          actions: "operate",
         }
       ],
     },
